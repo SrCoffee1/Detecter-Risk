@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações de Monitoramento</title>
+    <link rel="stylesheet" href="sidebar.css">
+</head>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    background: #5b99f5;
+    color: white;
+    width: 200px;
+    padding: 20px;
+    height: 100vh; /* Preenche toda a altura da tela */
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background: #f2f2f2;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #ff416c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff6f91;
+}
+
+</style>
+
+<body>
+    <div class="sidebar-container">
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="configuracoes.html">Configurações</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="visualizacao.html">Visualização de Câmeras</a></li>
+                <li><a href="alertas.html">Alertas</a></li>
+                <li><a href="historico.html">Histórico de Eventos</a></li>
+                <li><a href="perfil.html">Perfil do Usuário</a></li>
+                <li><a href="emergencia.html">Contatos de Emergência</a></li>
+                <li><a href="relatorios.html">Relatórios</a></li>
+                <li><a href="ajuda.html">Ajuda e Suporte</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Configurações de Monitoramento</h1>
+                <button id="logout">Sair</button>
+            </header>
+            <section class="config">
+                <h2>Parâmetros dos Sensores</h2>
+                <label for="sensibilidade">Sensibilidade:</label>
+                <input type="range" id="sensibilidade" min="1" max="10" value="5">
+                <p>Valor atual: <span id="sensibilidade-value">5</span></p>
+
+                <label for="frequencia">Frequência das Notificações:</label>
+                <input type="number" id="frequencia" value="15"> minutos
+
+                <label for="silencio">Tempos de Silêncio:</label>
+                <input type="time" id="inicio-silencio">
+                <input type="time" id="fim-silencio">
+
+                <button id="save">Salvar Configurações</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="configuracoes.js"></script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Monitoramento</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #5b99f5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    margin: 0;
+}
+
+button {
+    background: #ff416c;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.status-section, .log-section {
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.area-status {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.area {
+    width: 45%;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    background: #e0e0e0;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.area:hover {
+    background: #d1d1d1;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.alert {
+    color: #ff416c;
+}
+
+</style>
+
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Monitoramento de Segurança</h1>
+            <button id="logout">Sair</button>
+        </header>
+        
+        <section class="status-section">
+            <h2>Status das Áreas</h2>
+            <div class="area-status">
+                <div class="area" id="area-living-room">
+                    <h3>Sala de Estar</h3>
+                    <p class="status">Tudo normal</p>
+                </div>
+                <div class="area" id="area-kitchen">
+                    <h3>Cozinha</h3>
+                    <p class="status alert">Alerta em Cozinha</p>
+                </div>
+                <div class="area" id="area-bedroom">
+                    <h3>Quarto</h3>
+                    <p class="status">Tudo normal</p>
+                </div>
+                <div class="area" id="area-garage">
+                    <h3>Garagem</h3>
+                    <p class="status">Tudo normal</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="log-section">
+            <h2>Log de Atividades</h2>
+            <ul id="activity-log">
+                <li>12:30 - Movimento detectado na Sala de Estar.</li>
+                <li>12:15 - Sensor de fumaça ativado na Cozinha.</li>
+                <li>12:00 - Câmera da Garagem ativada.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>document.getElementById('logout').addEventListener('click', () => {
+        alert("Logout realizado com sucesso!");
+        // Redirecionar para a tela de login
+        window.location.href = 'index.html';
+    });
+    
+    // Função para atualizar o log de atividades
+    function updateActivityLog(message) {
+        const log = document.getElementById('activity-log');
+        const newLogEntry = document.createElement('li');
+        newLogEntry.textContent = message;
+        log.prepend(newLogEntry);
+    }
+    
+    // Exemplo de atualização do log
+    setTimeout(() => {
+        updateActivityLog("13:00 - Movimento detectado na Cozinha.");
+    }, 5000);
+    </script>
+</body>
+</html>
