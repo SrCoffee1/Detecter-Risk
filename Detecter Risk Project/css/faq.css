@@ -3,15 +3,26 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e293b, #3b82f6);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
 }
 
 /* Estilo do contêiner da FAQ */
 .faq-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f9;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background: linear-gradient(145deg, #ffffff, #f3f3f8);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 4px 8px rgba(255, 255, 255, 0.5);
 }
 
 /* Cabeçalho */
@@ -19,62 +30,136 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background: linear-gradient(90deg, #3b82f6, #1e3a8a);
     color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease;
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
 #logout {
-    background-color: #ff4b5c;
+    background: linear-gradient(90deg, #ff5c7d00, #ff5c7d00);
     color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    border: #fff 3px solid;
+    padding: 12px 30px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
 }
 
 #logout:hover {
-    background-color: #ff2a3e;
+    background: linear-gradient(90deg, #ff3754, #e3263b);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Estilo para as questões e respostas */
 .faq {
-    margin-top: 20px;
+    margin-top: 40px;
+    animation: fadeIn 1.2s ease;
 }
 
 .faq-item {
-    background-color: white;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s;
+    background: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
 }
 
 .faq-item:hover {
-    transform: translateY(-5px);
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 81, 255, 0.678);
+}
+
+.faq-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg, #3b82f6, #1e3a8a);
+    border-radius: 15px 0 0 15px;
 }
 
 .faq-question {
-    font-size: 1.25rem;
-    font-weight: bold;
+    font-size: 1.6rem;
+    font-weight: 600;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    transition: color 0.4s ease;
+}
+
+.faq-question:hover {
+    color: #457B9D;
 }
 
 .faq-answer {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
+    line-height: 1.8;
+    letter-spacing: 0.4px;
 }
 
-/* Estilo de responsividade */
+/* Botão de expandir e colapsar */
+.faq-toggle {
+    background: linear-gradient(90deg, #2575fc, #6a11cb);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.faq-toggle:hover {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    transform: scale(1.1);
+}
+
+/* Animação de entrada */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -82,19 +167,23 @@ header h1 {
     }
 
     header h1 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
+        font-size: 2rem;
+        margin-bottom: 15px;
     }
 
     #logout {
-        margin-top: 10px;
+        margin-top: 15px;
     }
 
     .faq-item {
-        padding: 15px;
+        padding: 20px;
     }
 
     .faq-question {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
     }
 }

@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #0e1929, #457B9D);
+    background: linear-gradient(135deg, #1e293b, #3b82f6);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -66,7 +66,7 @@ body {
 
 /* Botão de Login */
 .login-button {
-    background: linear-gradient(90deg, #457B9D, #457B9D);
+    background: linear-gradient(90deg, #3b82f6, #1e568a);
     color: #fff;
     border: #fff solid 3px;
     border-radius: 10px;
@@ -78,7 +78,7 @@ body {
 }
 
 .login-button:hover {
-    background: linear-gradient(90deg, #226188, #226188);
+    background: linear-gradient(90deg, #1e568a, #1e568a);
     transform: scale(1.05);
     transition: all 0.6s ease;
 }
@@ -86,7 +86,7 @@ body {
 /* Link Esqueceu Senha */
 .forgot_password {
     font-size: 14px;
-    color: #A8DADC;
+    color: #e6f6ff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
