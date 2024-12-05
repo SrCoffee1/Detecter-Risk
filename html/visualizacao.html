@@ -67,7 +67,6 @@
     window.location.href = "../html/sidebar.html";
   });
     
-    // Função para atualizar o log de atividades
     function updateActivityLog(message) {
         const log = document.getElementById('activity-log');
         const newLogEntry = document.createElement('li');
@@ -75,7 +74,6 @@
         log.prepend(newLogEntry);
     }
     
-    // Exemplo de atualização do log
     setTimeout(() => {
         updateActivityLog("13:00 - Movimento detectado na Cozinha.");
     }, 5000);

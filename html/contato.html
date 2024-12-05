@@ -7,30 +7,19 @@
     <link rel="stylesheet" href="/css/contato.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
     <header>
         <h1>Contato de Emergência</h1>
-        <!-- Botão de voltar para sidebar.html -->
         <button id="voltar" onclick="window.location.href='sidebar.html'">Voltar</button>
     </header>
 
-    <!-- Conteúdo principal -->
-    <div class="faq-container">
-        <!-- Botão de Emergência -->
-        <button class="emergency-call" onclick="chamarEmergencia()">📞 Chamar Emergência (SAMU)</button>
-
-        <!-- Lista de contatos -->
-        <div class="family-contacts">
+    <main class="faq-container">
+        <section class="family-contacts">
             <h2>Contatos Rápidos</h2>
-            <ul id="contact-list">
-                <!-- Contatos dinâmicos -->
-            </ul>
-            <!-- Botão para adicionar novos contatos -->
+            <ul id="contact-list"></ul>
             <button class="add-contact" onclick="adicionarContato()">➕ Adicionar Contato</button>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- Modal para adicionar contato -->
     <div id="modal" class="modal hidden">
         <div class="modal-content">
             <h2>Adicionar Contato</h2>
