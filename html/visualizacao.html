@@ -7,18 +7,17 @@
     <link rel="stylesheet" href="../css/visualizacao.css">
 </head>
 
-
 <body>
     <div class="visualizacao-container">
         <header>
             <h1>Visualização de Câmeras</h1>
-           <button id="voltar">Voltar</button>
+            <button id="voltar">Voltar</button>
         </header>
         
         <section class="cameras">
             <h2>Câmeras</h2>
             <div class="camera-feed" id="camera-feed">
-                <img id="stream" src="http://192.168.80.216:81/stream"alt="Feed de câmera">
+                <img id="stream" src="http://192.168.80.216:81/stream" alt="Feed de câmera">
             </div>
             <div class="area-selector">
                 <button onclick="selectArea('sala')">Sala de Estar</button>
@@ -29,7 +28,6 @@
         </section>
 
         <div class="dashboard-container">
-            
             <section class="status-section">
                 <h2>Status das Áreas</h2>
                 <div class="area-status">
@@ -62,49 +60,60 @@
             </section>
         </div>
 
+        <!-- Botão de teste para envio de alerta -->
+        <button id="enviar-alerta">Enviar Alerta</button>
+    </div>
+
+    <script src="../js/visualizacao.js"></script>
     <script>
-         document.getElementById('voltar').addEventListener('click', function () {
-    window.location.href = "../html/sidebar.html";
-  });
-    
-    function updateActivityLog(message) {
-        const log = document.getElementById('activity-log');
-        const newLogEntry = document.createElement('li');
-        newLogEntry.textContent = message;
-        log.prepend(newLogEntry);
-    }
-    
-    setTimeout(() => {
-        updateActivityLog("13:00 - Movimento detectado na Cozinha.");
-    }, 5000);
+        // Redirecionar para a página de sidebar
+        document.getElementById('voltar').addEventListener('click', function () {
+            window.location.href = "../html/sidebar.html";
+        });
 
-        document.getElementById('logout').addEventListener('click', () => {
-    alert("Logout realizado com sucesso!");
-    window.location.href = 'index.html';
-});
+        // Atualizar log de atividades
+        function updateActivityLog(message) {
+            const log = document.getElementById('activity-log');
+            const newLogEntry = document.createElement('li');
+            newLogEntry.textContent = message;
+            log.prepend(newLogEntry);
+        }
 
-function selectArea(area) {
-    const video = document.querySelector('video');
-    video.src = `path_to_your_stream/${area}.mp4`; // Substitua pelo caminho do seu feed
-    // Atualize os dados do sensor
-    updateSensorData(area);
-}
+        setTimeout(() => {
+            updateActivityLog("13:00 - Movimento detectado na Cozinha.");
+        }, 5000);
 
-function updateSensorData(area) {
-    // Aqui você pode buscar dados do sensor via API ou outro método
-    const movementLevel = Math.floor(Math.random() * 100); // Exemplo aleatório
-    document.getElementById('movement-level').innerText = movementLevel;
-    drawChart(movementLevel);
-}
+        // Função para simular o envio de mensagens
+        async function enviarMensagemAlerta() {
+            const backendUrl = "http://localhost:3000/enviar-mensagem";
 
-function drawChart(movementLevel) {
-    const canvas = document.getElementById('movement-chart');
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(0, canvas.height - movementLevel, 50, movementLevel); // Exemplo simples
-}
+            const mensagem = {
+                numero: "5511999999999", // Número no formato internacional
+                mensagem: "⚠️ Alerta: Movimento detectado na Sala de Estar!",
+            };
 
+            try {
+                const resposta = await fetch(backendUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(mensagem),
+                });
+
+                const dados = await resposta.json();
+                console.log("Mensagem enviada com sucesso:", dados);
+                updateActivityLog("Mensagem enviada: Alerta enviado para o WhatsApp.");
+            } catch (erro) {
+                console.error("Erro ao enviar mensagem:", erro);
+                updateActivityLog("Erro ao enviar mensagem de alerta.");
+            }
+        }
+
+        // Adiciona funcionalidade ao botão "Enviar Alerta"
+        document.getElementById('enviar-alerta').addEventListener('click', () => {
+            enviarMensagemAlerta();
+        });
     </script>
 </body>
 </html>

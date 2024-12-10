@@ -1,0 +1,6 @@
+2024/12/10-16:36:08.132 2db4 Reusing MANIFEST C:\Users\isaia\OneDrive\Documentos\Detecter Risk\backend\tokens\session\Default\Local Storage\leveldb/MANIFEST-000001
+2024/12/10-16:36:08.139 2db4 Recovering log #3
+2024/12/10-16:36:08.143 2db4 Reusing old log C:\Users\isaia\OneDrive\Documentos\Detecter Risk\backend\tokens\session\Default\Local Storage\leveldb/000003.log 
+2024/12/10-16:55:08.812 2db4 Level-0 table #5: started
+2024/12/10-16:55:08.857 2db4 Level-0 table #5: 15751 bytes OK
+2024/12/10-16:55:08.884 2db4 Delete type=0 #3
